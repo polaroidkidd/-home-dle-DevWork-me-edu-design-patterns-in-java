@@ -7,14 +7,12 @@ import java.io.PrintStream;
 public class Persistence {
 
     public void saveToFile(Journal journal, String fileName, boolean overwrite) throws FileNotFoundException {
+
+
         if(overwrite || new File(fileName).exists()){
             try (PrintStream out = new PrintStream(fileName)){
-                out.println(toString());
+                out.println(journal.toString());
             }
         }
     }
-
-//    public Journal load(String fileName){
-//
-//    }
 }
