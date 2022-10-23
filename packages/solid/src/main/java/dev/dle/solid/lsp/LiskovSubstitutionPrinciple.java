@@ -2,26 +2,29 @@ package dev.dle.solid.lsp;
 
 public class LiskovSubstitutionPrinciple {
 
-    public void runDemo() {
-        Rectangle rc = new Rectangle(2, 3);
-        useIt(rc);
+    public void runDemo(boolean shouldRun) {
+        if (shouldRun) {
 
-        /*
-         * The square function silently sets width and height, even though it's a Rectangle. When you get
-         * the wrong area for this
-         */
-        Rectangle sq = new Square();
-        sq.setHeight(5);
-        useIt(sq);
+            Rectangle rc = new Rectangle(2, 3);
+            useIt(rc);
 
-        /*
-         * With this factory you can create shapes
-         */
-        Rectangle fc = RectangleFactory.newSquare(5);
-        useIt(fc);
+            /*
+             * The square function silently sets width and height, even though it's a Rectangle. When you get
+             * the wrong area for this
+             */
+            Rectangle sq = new Square();
+            sq.setHeight(5);
+            useIt(sq);
 
-        Rectangle nfc = RectangleFactory.newRectangle(2, 7);
-        useIt(nfc);
+            /*
+             * With this factory you can create shapes
+             */
+            Rectangle fc = RectangleFactory.newSquare(5);
+            useIt(fc);
+
+            Rectangle nfc = RectangleFactory.newRectangle(2, 7);
+            useIt(nfc);
+        }
     }
 
     static void useIt(Rectangle r) {

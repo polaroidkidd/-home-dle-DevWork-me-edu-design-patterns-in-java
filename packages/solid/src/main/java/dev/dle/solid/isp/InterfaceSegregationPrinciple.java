@@ -2,14 +2,17 @@ package dev.dle.solid.isp;
 
 public class InterfaceSegregationPrinciple {
 
-    public void runDemo() {
-        Document d = new Document("This is the document text");
-        Printer printer = new JustAPrinter();
-        Scanner scanner = new JustAScanner();
-        printer.print(d);
-        MultiFunctionDevice mfd = new PrinterScanner(printer, scanner);
-        mfd.print(d);
-        mfd.scan(d);
+    public void runDemo(boolean shouldRun) {
+        if (shouldRun) {
+
+            Document d = new Document("This is the document text");
+            Printer printer = new JustAPrinter();
+            Scanner scanner = new JustAScanner();
+            printer.print(d);
+            MultiFunctionDevice mfd = new PrinterScanner(printer, scanner);
+            mfd.print(d);
+            mfd.scan(d);
+        }
     }
 }
 

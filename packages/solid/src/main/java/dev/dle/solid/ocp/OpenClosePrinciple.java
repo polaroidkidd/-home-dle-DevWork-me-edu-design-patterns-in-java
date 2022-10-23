@@ -116,24 +116,27 @@ class AndSpecification<T> implements Specification<T> {
 
 public class OpenClosePrinciple {
 
-    public void runDemo() {
-        Product apple = new Product("Apple", Color.GREEN, Size.SMALL);
-        Product tree = new Product("Tree", Color.GREEN, Size.LARGE);
-        Product house = new Product("House", Color.BLUE, Size.LARGE);
+    public void runDemo(boolean shouldRun) {
+        if (shouldRun) {
 
-        List<Product> productList = List.of(apple, tree, house);
-        ProductFilter pf = new ProductFilter();
-        System.out.println("Green Products (old):");
-        pf.filterByColor(productList, Color.GREEN).forEach(p -> System.out.println(" - " + p.name + " is green"));
+            Product apple = new Product("Apple", Color.GREEN, Size.SMALL);
+            Product tree = new Product("Tree", Color.GREEN, Size.LARGE);
+            Product house = new Product("House", Color.BLUE, Size.LARGE);
 
-        BetterFilter bf = new BetterFilter();
-        System.out.println("Green Products (new):");
-        bf.filter(productList, new ColorSpecification(Color.GREEN)).forEach(p -> System.out.println(" - " + p.name + " is green"));
+            List<Product> productList = List.of(apple, tree, house);
+            ProductFilter pf = new ProductFilter();
+            System.out.println("Green Products (old):");
+            pf.filterByColor(productList, Color.GREEN).forEach(p -> System.out.println(" - " + p.name + " is green"));
 
-        System.out.println("Large Blue items: ");
-        bf.filter(productList, new AndSpecification<>(List.of(
-                new ColorSpecification(Color.BLUE),
-                new SizeSpecification(Size.LARGE)
-        ))).forEach(p -> System.out.println(" - " + p.name + " is Large and Blue"));
+            BetterFilter bf = new BetterFilter();
+            System.out.println("Green Products (new):");
+            bf.filter(productList, new ColorSpecification(Color.GREEN)).forEach(p -> System.out.println(" - " + p.name + " is green"));
+
+            System.out.println("Large Blue items: ");
+            bf.filter(productList, new AndSpecification<>(List.of(
+                    new ColorSpecification(Color.BLUE),
+                    new SizeSpecification(Size.LARGE)
+            ))).forEach(p -> System.out.println(" - " + p.name + " is Large and Blue"));
+        }
     }
 }
