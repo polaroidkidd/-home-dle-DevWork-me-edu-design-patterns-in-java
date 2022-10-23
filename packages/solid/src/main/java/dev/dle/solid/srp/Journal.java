@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Journal {
-    public Journal() {
-        System.out.println("Hello From SingleResponsibilityPrinciple");
-    }
 
     private final List<String> entries = new ArrayList<>();
     private static int count = 0;
